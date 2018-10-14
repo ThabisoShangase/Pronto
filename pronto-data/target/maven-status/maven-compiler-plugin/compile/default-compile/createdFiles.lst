@@ -1,0 +1,11 @@
+za\co\pronto\model\PaymentMethod.class
+za\co\pronto\model\OrderProduct.class
+za\co\pronto\model\User.class
+za\co\pronto\model\Product.class
+za\co\pronto\model\Order.class
+za\co\pronto\model\Catalogue.class
+za\co\pronto\model\Payment.class
+za\co\pronto\model\ServiceProvider.class
+za\co\pronto\model\CatalogueProduct.class
+za\co\pronto\model\AuthUser.class
+za\co\pronto\model\OrderPayment.class
