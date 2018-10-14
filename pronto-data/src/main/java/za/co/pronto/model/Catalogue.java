@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import java.io.ObjectInput;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
