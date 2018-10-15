@@ -32,7 +32,7 @@ public class ServiceOrder implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User requestingUser;
+    private UserInfo requestingUserInfo;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "serviceOrder")
     private List<OrderProduct> orderProducts = new ArrayList<>();
@@ -49,13 +49,13 @@ public class ServiceOrder implements Serializable {
     public ServiceOrder(Long orderId,
                         Date orderDate,
                         ServiceProvider serviceProvider,
-                        User requestingUser,
+                        UserInfo requestingUserInfo,
                         List<OrderProduct> orderProducts,
                         OrderPayment orderPayment) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.serviceProvider = serviceProvider;
-        this.requestingUser = requestingUser;
+        this.requestingUserInfo = requestingUserInfo;
         this.orderProducts = orderProducts;
         this.orderPayment = orderPayment;
     }
@@ -84,12 +84,12 @@ public class ServiceOrder implements Serializable {
         this.serviceProvider = serviceProvider;
     }
 
-    public User getRequestingUser() {
-        return requestingUser;
+    public UserInfo getRequestingUserInfo() {
+        return requestingUserInfo;
     }
 
-    public void setRequestingUser(User requestingUser) {
-        this.requestingUser = requestingUser;
+    public void setRequestingUserInfo(UserInfo requestingUserInfo) {
+        this.requestingUserInfo = requestingUserInfo;
     }
 
     public List<OrderProduct> getOrderProducts() {
@@ -119,7 +119,7 @@ public class ServiceOrder implements Serializable {
         ServiceOrder serviceOrder = (ServiceOrder) o;
         return Objects.equals(orderId, serviceOrder.orderId) &&
                 Objects.equals(serviceProvider, serviceOrder.serviceProvider) &&
-                Objects.equals(requestingUser, serviceOrder.requestingUser) &&
+                Objects.equals(requestingUserInfo, serviceOrder.requestingUserInfo) &&
                 Objects.equals(orderProducts, serviceOrder.orderProducts) &&
                 Objects.equals(orderPayment, serviceOrder.orderPayment) &&
                 Objects.equals(orderDate, serviceOrder.orderDate);
@@ -128,7 +128,7 @@ public class ServiceOrder implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(orderId, serviceProvider, requestingUser, orderProducts, orderPayment, orderDate);
+        return Objects.hash(orderId, serviceProvider, requestingUserInfo, orderProducts, orderPayment, orderDate);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class ServiceOrder implements Serializable {
         return "ServiceOrder{" +
                 "orderId=" + orderId +
                 ", serviceProvider=" + serviceProvider +
-                ", requestingUser=" + requestingUser +
+                ", requestingUserInfo=" + requestingUserInfo +
                 ", orderProducts=" + orderProducts +
                 ", orderPayment=" + orderPayment +
                 ", orderDate=" + orderDate +

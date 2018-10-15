@@ -11,8 +11,8 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "USER")
-public class User implements Serializable {
+@Table(name = "USER_INFO")
+public class UserInfo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,15 +31,13 @@ public class User implements Serializable {
     @Column(name = "date_of_joining", nullable = false)
     private Date dateOfJoining;
 
-    public User() {
+    public UserInfo() {
     }
 
-    public User(Long userId,
-                String userName,
-                String firstName,
-                String lastName,
-                Date dateOfJoining) {
-        this.userId = userId;
+    public UserInfo(String userName,
+                    String firstName,
+                    String lastName,
+                    Date dateOfJoining) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,12 +88,12 @@ public class User implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userId, user.userId) &&
-                Objects.equals(userName, user.userName) &&
-                Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName) &&
-                Objects.equals(dateOfJoining, user.dateOfJoining);
+        UserInfo userInfo = (UserInfo) o;
+        return Objects.equals(userId, userInfo.userId) &&
+                Objects.equals(userName, userInfo.userName) &&
+                Objects.equals(firstName, userInfo.firstName) &&
+                Objects.equals(lastName, userInfo.lastName) &&
+                Objects.equals(dateOfJoining, userInfo.dateOfJoining);
     }
 
     @Override
@@ -106,7 +104,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserInfo{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", firstName='" + firstName + '\'' +
