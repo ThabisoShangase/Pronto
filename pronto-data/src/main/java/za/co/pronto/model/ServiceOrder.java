@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ORDER")
-public class Order implements Serializable {
+@Table(name = "SERVICE_ORDER")
+public class ServiceOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,27 +31,27 @@ public class Order implements Serializable {
     private ServiceProvider serviceProvider;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Column(name = "requesting_user", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User requestingUser;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "serviceOrder")
     private List<OrderProduct> orderProducts = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "order")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "serviceOrder")
     private OrderPayment orderPayment;
 
     @Column(name = "order_date", nullable = false)
     private Date orderDate;
 
-    public Order() {
+    public ServiceOrder() {
     }
 
-    public Order(Long orderId,
-                 Date orderDate,
-                 ServiceProvider serviceProvider,
-                 User requestingUser,
-                 List<OrderProduct> orderProducts,
-                 OrderPayment orderPayment) {
+    public ServiceOrder(Long orderId,
+                        Date orderDate,
+                        ServiceProvider serviceProvider,
+                        User requestingUser,
+                        List<OrderProduct> orderProducts,
+                        OrderPayment orderPayment) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.serviceProvider = serviceProvider;
@@ -116,13 +116,13 @@ public class Order implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Objects.equals(orderId, order.orderId) &&
-                Objects.equals(serviceProvider, order.serviceProvider) &&
-                Objects.equals(requestingUser, order.requestingUser) &&
-                Objects.equals(orderProducts, order.orderProducts) &&
-                Objects.equals(orderPayment, order.orderPayment) &&
-                Objects.equals(orderDate, order.orderDate);
+        ServiceOrder serviceOrder = (ServiceOrder) o;
+        return Objects.equals(orderId, serviceOrder.orderId) &&
+                Objects.equals(serviceProvider, serviceOrder.serviceProvider) &&
+                Objects.equals(requestingUser, serviceOrder.requestingUser) &&
+                Objects.equals(orderProducts, serviceOrder.orderProducts) &&
+                Objects.equals(orderPayment, serviceOrder.orderPayment) &&
+                Objects.equals(orderDate, serviceOrder.orderDate);
     }
 
     @Override
@@ -133,7 +133,7 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "ServiceOrder{" +
                 "orderId=" + orderId +
                 ", serviceProvider=" + serviceProvider +
                 ", requestingUser=" + requestingUser +

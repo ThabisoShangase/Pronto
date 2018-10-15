@@ -25,7 +25,7 @@ public class OrderProduct implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    private ServiceOrder serviceOrder;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
@@ -34,9 +34,9 @@ public class OrderProduct implements Serializable {
     public OrderProduct() {
     }
 
-    public OrderProduct(Order order,
+    public OrderProduct(ServiceOrder serviceOrder,
                         Product product) {
-        this.order = order;
+        this.serviceOrder = serviceOrder;
         this.product = product;
     }
 
@@ -44,12 +44,12 @@ public class OrderProduct implements Serializable {
         return orderProductId;
     }
 
-    public Order getOrder() {
-        return order;
+    public ServiceOrder getServiceOrder() {
+        return serviceOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setServiceOrder(ServiceOrder serviceOrder) {
+        this.serviceOrder = serviceOrder;
     }
 
     public Product getProduct() {
@@ -66,21 +66,21 @@ public class OrderProduct implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         OrderProduct that = (OrderProduct) o;
         return Objects.equals(orderProductId, that.orderProductId) &&
-                Objects.equals(order, that.order) &&
+                Objects.equals(serviceOrder, that.serviceOrder) &&
                 Objects.equals(product, that.product);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(orderProductId, order, product);
+        return Objects.hash(orderProductId, serviceOrder, product);
     }
 
     @Override
     public String toString() {
         return "OrderProduct{" +
                 "orderProductId=" + orderProductId +
-                ", order=" + order +
+                ", serviceOrder=" + serviceOrder +
                 ", product=" + product +
                 '}';
     }

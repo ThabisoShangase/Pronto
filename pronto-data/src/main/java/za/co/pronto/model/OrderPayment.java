@@ -22,7 +22,7 @@ public class OrderPayment implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Order order;
+    private ServiceOrder serviceOrder;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_id")
@@ -31,9 +31,9 @@ public class OrderPayment implements Serializable {
     public OrderPayment() {
     }
 
-    public OrderPayment(Order order,
+    public OrderPayment(ServiceOrder serviceOrder,
                         Payment payment) {
-        this.order = order;
+        this.serviceOrder = serviceOrder;
         this.payment = payment;
     }
 
@@ -41,12 +41,12 @@ public class OrderPayment implements Serializable {
         return orderPaymentId;
     }
 
-    public Order getOrder() {
-        return order;
+    public ServiceOrder getServiceOrder() {
+        return serviceOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setServiceOrder(ServiceOrder serviceOrder) {
+        this.serviceOrder = serviceOrder;
     }
 
     public Payment getPayment() {
@@ -63,21 +63,21 @@ public class OrderPayment implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         OrderPayment that = (OrderPayment) o;
         return Objects.equals(orderPaymentId, that.orderPaymentId) &&
-                Objects.equals(order, that.order) &&
+                Objects.equals(serviceOrder, that.serviceOrder) &&
                 Objects.equals(payment, that.payment);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(orderPaymentId, order, payment);
+        return Objects.hash(orderPaymentId, serviceOrder, payment);
     }
 
     @Override
     public String toString() {
         return "OrderPayment{" +
                 "orderPaymentId=" + orderPaymentId +
-                ", order=" + order +
+                ", serviceOrder=" + serviceOrder +
                 ", payment=" + payment +
                 '}';
     }
