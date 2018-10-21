@@ -20,7 +20,7 @@ public class UserInfo implements Serializable {
     private Long userId;
 
     @Column(name = "user_name", nullable = false, length = 45)
-    private String userName;
+    private String username;
 
     @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;
@@ -34,11 +34,11 @@ public class UserInfo implements Serializable {
     public UserInfo() {
     }
 
-    public UserInfo(String userName,
+    public UserInfo(String username,
                     String firstName,
                     String lastName,
                     Date dateOfJoining) {
-        this.userName = userName;
+        this.username    = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfJoining = dateOfJoining;
@@ -53,11 +53,11 @@ public class UserInfo implements Serializable {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -90,7 +90,7 @@ public class UserInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         UserInfo userInfo = (UserInfo) o;
         return Objects.equals(userId, userInfo.userId) &&
-                Objects.equals(userName, userInfo.userName) &&
+                Objects.equals(username, userInfo.username) &&
                 Objects.equals(firstName, userInfo.firstName) &&
                 Objects.equals(lastName, userInfo.lastName) &&
                 Objects.equals(dateOfJoining, userInfo.dateOfJoining);
@@ -99,14 +99,14 @@ public class UserInfo implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(userId, userName, firstName, lastName, dateOfJoining);
+        return Objects.hash(userId, username, firstName, lastName, dateOfJoining);
     }
 
     @Override
     public String toString() {
         return "UserInfo{" +
                 "userId=" + userId +
-                ", userName='" + userName + '\'' +
+                ", userName='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfJoining=" + dateOfJoining +

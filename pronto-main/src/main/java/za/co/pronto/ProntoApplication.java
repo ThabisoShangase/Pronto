@@ -5,17 +5,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import za.co.pronto.model.UserInfo;
-import za.co.pronto.repositories.UserRepository;
-
-import java.util.Date;
+import za.co.pronto.repositories.UserInfoRepository;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"za.co.pronto.model"})
 public class ProntoApplication implements CommandLineRunner {
 
     @Autowired
-    UserRepository userRepository;
+    UserInfoRepository userInfoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(ProntoApplication.class);

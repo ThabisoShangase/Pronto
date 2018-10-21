@@ -20,6 +20,8 @@
         <module>pronto-data</module>
         <module>pronto-ui</module>
         <module>pronto-main</module>
+        <module>pronto-services</module>
+        <module>pronto-core</module>
     </modules>
 
 
