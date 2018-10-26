@@ -3,7 +3,6 @@ package za.co.pronto.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.co.pronto.dto.User;
-import za.co.pronto.model.AuthUser;
 import za.co.pronto.repositories.AuthUserRepository;
 import za.co.pronto.repositories.UserInfoRepository;
 import za.co.pronto.request.UserLoginRequest;
@@ -22,7 +21,7 @@ public class AuthUserServiceImpl implements AuthUserService {
     public User registerUser(UserRegistrationRequest registrationRequest) {
         //Do some validations
 
-        authUserRepository.save(authUser);
+//        authUserRepository.save(authUser);
         return null;
     }
 

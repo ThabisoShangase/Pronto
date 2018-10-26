@@ -6,4 +6,6 @@ import za.co.pronto.model.AuthUser;
 
 @Repository
 public interface AuthUserRepository extends JpaRepository<AuthUser, Long> {
+
+    AuthUser findAuthUserByUsername(String username);
 }
