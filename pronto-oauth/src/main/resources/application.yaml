@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: vanilla
+  management:
+    context_path: /admin
+  security:
+    user:
+      name: user
+      password: password
+  oauth2:
+    resource:
+      filter-order: 3
+logging:
+  level:
+     org.springframework.security: DEBUG
